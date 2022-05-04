@@ -4,9 +4,13 @@ namespace Inoxico.TechnicalQuestions.Answers
     public class QuestionTwo
     {        
         public static int GetPitDepth(int[] points)
-        {                       
-            int depthOfdeepestPit = -1;
+        {
             int arraySize = points.Length - 1;
+
+            if (arraySize < 1 || arraySize >= 100000)
+                throw new ArgumentOutOfRangeException(nameof(points), $"The length of points array must be within the range 1 to 1000,000");
+
+            int depthOfdeepestPit = -1;            
 
             // Check if the array is long enough to store a pit
             if (arraySize < 2)
@@ -44,7 +48,8 @@ namespace Inoxico.TechnicalQuestions.Answers
 
                 //R_Point is the last point
                 int R_Point = points[R];
-                                
+
+                //Only count the pit if the decline started above ground i.e.,0
                 if (R_Point >= 0 && P_Point >= 0)
                     depthOfdeepestPit = Math.Max(depthOfdeepestPit, Math.Min(P_Point - Q_Point, R_Point - Q_Point));
 
