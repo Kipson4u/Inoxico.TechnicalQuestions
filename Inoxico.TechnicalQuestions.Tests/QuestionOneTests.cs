@@ -13,5 +13,14 @@ namespace Inoxico.TechnicalQuestions.Tests
 
             Assert.Equal(4, outcome);
         }
+
+        [Fact]
+        public void GetLongestSentance_Must_Be_2_Test()
+        {
+            var input = $"Forget CVs..Save time . x x";
+            var outcome = QuestionOne.GetLongestSentance(input);
+
+            Assert.Equal(2, outcome);
+        }
     }
 }
