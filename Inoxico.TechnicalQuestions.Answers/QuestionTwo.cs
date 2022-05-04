@@ -13,22 +13,33 @@ namespace Inoxico.TechnicalQuestions.Answers
             //o The depth of a pit(P, Q, R) is the number min{ A[P] − A[Q], A[R] − A[Q]}.
            
             int depthOfdeepestPit = -1;
+            int arraySize = points.Length - 1;
 
-            for (int P = 0; P < points.Length - 3; P++)
+            if (arraySize < 2)
+                return depthOfdeepestPit;
+
+
+            for (int P = 0; P < arraySize - 2; P++)
             {                
                 int P_Point = points[P];
                 int Q = P + 1;
 
-                while (points[Q] < points[Q - 1] && Q < points.Length - 2)
-                    Q++; 
+                while (points[Q] < points[Q - 1] && Q < arraySize - 1)
+                    Q++;
+
+                if (Q == P + 1)
+                    continue;
 
                 Q = Q - 1;
                 
                 int Q_Point = points[Q];
                 int R = Q + 1;
 
-                while (points[R] > points[R - 1] && R < points.Length - 1)
+                while (points[R] > points[R - 1] && R < arraySize)
                     R++;
+
+                if (R == Q + 1)
+                    continue;
 
                 R = R - 1;
                 
