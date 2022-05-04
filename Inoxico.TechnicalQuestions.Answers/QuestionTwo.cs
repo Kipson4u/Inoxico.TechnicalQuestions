@@ -12,7 +12,7 @@ namespace Inoxico.TechnicalQuestions.Answers
             //i.e.A[Q] < A[Q + 1] = A[R].
             //o The depth of a pit(P, Q, R) is the number min{ A[P] − A[Q], A[R] − A[Q]}.
            
-            int deepestPit = -1;
+            int depthOfdeepestPit = -1;
 
             for (int P = 0; P < points.Length - 3; P++)
             {                
@@ -35,11 +35,11 @@ namespace Inoxico.TechnicalQuestions.Answers
                 int R_Point = points[R];
                                 
                 if (R_Point >= 0 && P_Point >= 0)
-                    deepestPit = Math.Min(P_Point - Q_Point, R_Point - Q_Point);
+                    depthOfdeepestPit =Math.Max(depthOfdeepestPit, Math.Min(P_Point - Q_Point, R_Point - Q_Point));
 
             }
 
-            return deepestPit;
+            return depthOfdeepestPit;
         }
     }
 }
