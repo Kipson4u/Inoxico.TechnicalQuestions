@@ -15,5 +15,15 @@ namespace Inoxico.TechnicalQuestions.Tests
 
             Assert.Equal(4, result);
         }
+
+        [Fact]
+        public void GetPitDepth_Must_Return_2_Test()
+        {
+            var points = new[] { 1, 2, 3, 1, 2, 3, 1, 2, 3 };
+
+            var result = QuestionTwo.GetPitDepth(points);
+
+            Assert.Equal(2, result);
+        }
     }
 }
